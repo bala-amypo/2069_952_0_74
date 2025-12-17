@@ -37,13 +37,13 @@ public class Student {
     public void setCgpa(float cgpa) {
         this.cgpa = cgpa;
     }
-    public void Student(Long id,String name,String dept,LocalDate dob,float cgpa){
+    public Student(){
+    }
+    public Student(Long id,String name,String dept,LocalDate dob,float cgpa){
         this.id = id;
         this.name = name;
         this.dept = dept;
         this.dob = dob;
         this.cgpa = cgpa;
-    }
-    public void Student(){
     }
 }
