@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ public class StudentServiceImpl implements StudentService {
 
     // CREATE
     @Override
-    public Student poststudent(Student st) {
-        return stdrepo.save(st);
+    public Student poststudent(Student student) {
+        return stdrepo.save(student);
     }
 
     // READ: Get all students
@@ -40,10 +40,10 @@ public class StudentServiceImpl implements StudentService {
         Optional<Student> optionalStudent = stdrepo.findById(id);
         if (optionalStudent.isPresent()) {
             Student existingStudent = optionalStudent.get();
-            // Example: update fields (adjust based on your entity)
             existingStudent.setName(studentDetails.getName());
-            existingStudent.setAge(studentDetails.getAge());
-            existingStudent.setEmail(studentDetails.getEmail());
+            existingStudent.setDept(studentDetails.getDept());
+            existingStudent.setDob(studentDetails.getDob());
+            existingStudent.setCgpa(studentDetails.getCgpa());
             return stdrepo.save(existingStudent);
         } else {
             return null; // or throw custom exception
