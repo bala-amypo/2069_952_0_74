@@ -12,23 +12,9 @@ public class StudentController {
     @Autowired
     StudentService stdser;
 
-    
     @PostMapping('/addStudent')
     public Student addStudent(@RequestBody Student st) {
-        return studentService.poststudent(student);
+        return stdser.poststudent(st);
     }
 
-    
-    @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-        // You’ll need a corresponding method in StudentService
-        return null; // placeholder
-    }
-
-    
-    @GetMapping
-    public Iterable<Student> getAllStudents() {
-        // You’ll need a corresponding method in StudentService
-        return null; // placeholder
-    }
 }
