@@ -14,25 +14,24 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    // CREATE
+    
     @PostMapping
     public Student createStudent(@RequestBody Student student) {
         return studentService.poststudent(student);
     }
 
-    // READ: Get all students
     @GetMapping
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
-    // READ: Get student by ID
+    
     @GetMapping("/{id}")
     public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
-    // UPDATE: Update student by ID
+    
     @PutMapping("/{id}")
     public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
         return studentService.updateStudent(id, student);
