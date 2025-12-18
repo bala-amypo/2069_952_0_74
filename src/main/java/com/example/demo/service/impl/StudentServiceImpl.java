@@ -46,6 +46,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Long id) {
-        stdrepo.deleteById(id);
+        boolean status = stdrepo.existsById(id);
+        if(status){
+            stdrepo.deleteById(id);
+            return "Student Deleted Succefully";
+        }else{
+            return ""
+        }
+        
     }
 }
