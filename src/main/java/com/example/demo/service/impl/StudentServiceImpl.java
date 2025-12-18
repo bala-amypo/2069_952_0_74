@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> updateStudent(Long id, Student studentDetails) {
+    public Student updateStudent(Long id, Student studentDetails) {
         Optional<Student> optionalStudent = stdrepo.findById(id);
         if (optionalStudent.isPresent()) {
             Student existingStudent = optionalStudent.get();
@@ -40,13 +40,12 @@ public class StudentServiceImpl implements StudentService {
             existingStudent.setDob(studentDetails.getDob());
             existingStudent.setCgpa(studentDetails.getCgpa());
             return stdrepo.save(existingStudent);
-        } else {
-            return null; 
         }
+        return null; // no error messages, just null if not found
     }
 
     @Override
-    public Optional<Void> deleteStudent(Long id) {
+    public void deleteStudent(Long id) {
         stdrepo.deleteById(id);
     }
 }

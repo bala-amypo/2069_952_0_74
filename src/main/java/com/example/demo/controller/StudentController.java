@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
@@ -9,34 +8,33 @@ import com.example.demo.service.StudentService;
 import java.util.*;
 
 @RestController
-@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
-    @PostMapping
+    @PostMapping("/students")
     public Student createStudent(@RequestBody Student student) {
         return studentService.poststudent(student);
     }
 
-    @GetMapping
+    @GetMapping("/students")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/students/{id}")
     public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
-    @PutMapping("/{id}")
-    public Optional<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
-         return studentService.updateStudent(id, student);
+    @PutMapping("/students/{id}")
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
     }
 
-    @DeleteMapping("/{id}")
-    public Optional<Void> deleteStudent(@PathVariable Long id) {
-        return studentService.deleteStudent(id);
+    @DeleteMapping("/students/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
     }
 }
