@@ -32,17 +32,11 @@ public class StudentController {
 
     @PutMapping("/{id}")
     public Optional<Student> updateStudent(@PathVariable Long id, @RequestBody Student student) {
-        Student updatedStudent = studentService.updateStudent(id, student);
-        if (updatedStudent != null) {
-            return ResponseEntity.ok(updatedStudent);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+         return studentService.updateStudent(id, student);
     }
 
     @DeleteMapping("/{id}")
     public Optional<Void> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
-        return ResponseEntity.noContent().build();
     }
 }
