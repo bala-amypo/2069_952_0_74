@@ -15,26 +15,24 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository stdrepo;
 
-    // CREATE
+    
     @Override
     public Student poststudent(Student student) {
         return stdrepo.save(student);
     }
 
-    // READ: Get all students
     @Override
     public List<Student> getAllStudents() {
         return stdrepo.findAll();
     }
 
-    // READ: Get student by ID
+    
     @Override
     public Student getStudentById(Long id) {
         Optional<Student> student = stdrepo.findById(id);
         return student.orElse(null); // or throw custom exception
     }
 
-    // UPDATE: Update student by ID
     @Override
     public Student updateStudent(Long id, Student studentDetails) {
         Optional<Student> optionalStudent = stdrepo.findById(id);
@@ -46,7 +44,7 @@ public class StudentServiceImpl implements StudentService {
             existingStudent.setCgpa(studentDetails.getCgpa());
             return stdrepo.save(existingStudent);
         } else {
-            return null; // or throw custom exception
+            return null; 
         }
     }
 
