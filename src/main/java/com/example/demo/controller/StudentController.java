@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
 
+import jakarta.validation.Valid;
 import java.util.*;
 
 @RestController
@@ -14,7 +15,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/students")
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody Student student) {
         return studentService.poststudent(student);
     }
 
@@ -29,7 +30,7 @@ public class StudentController {
     }
 
     @PutMapping("/students/{id}")
-    public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
+    public Student updateStudent(@PathVariable Long id, @Valid @RequestBody Student student) {
         return studentService.updateStudent(id, student);
     }
 
