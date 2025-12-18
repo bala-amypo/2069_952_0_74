@@ -15,7 +15,6 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository stdrepo;
 
-    
     @Override
     public Student poststudent(Student student) {
         return stdrepo.save(student);
@@ -26,11 +25,9 @@ public class StudentServiceImpl implements StudentService {
         return stdrepo.findAll();
     }
 
-    
     @Override
-    public Student getStudentById(Long id) {
-        Optional<Student> student = stdrepo.findById(id);
-        return student.orElse(null); // or throw custom exception
+    public Optional<Student> getStudentById(Long id) {
+        return stdrepo.findById(id);
     }
 
     @Override
@@ -48,7 +45,6 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
-    // DELETE: Delete student by ID
     @Override
     public void deleteStudent(Long id) {
         stdrepo.deleteById(id);
