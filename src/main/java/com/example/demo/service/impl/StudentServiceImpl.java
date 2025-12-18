@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student updateStudent(Long id, Student studentDetails) {
+    public Optional<Student> updateStudent(Long id, Student studentDetails) {
         Optional<Student> optionalStudent = stdrepo.findById(id);
         if (optionalStudent.isPresent()) {
             Student existingStudent = optionalStudent.get();
@@ -46,7 +46,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void deleteStudent(Long id) {
+    public Optional<Void> deleteStudent(Long id) {
         stdrepo.deleteById(id);
     }
 }
