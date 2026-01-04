@@ -1,0 +1,9 @@
+// src/main/java/com/example/demo/service/RouteOptimizationService.java
+package com.example.demo.service;
+
+import com.example.demo.entity.RouteOptimizationResult;
+
+public interface RouteOptimizationService {
+    RouteOptimizationResult optimizeRoute(Long shipmentId);
+    RouteOptimizationResult getResult(Long id);
+}
