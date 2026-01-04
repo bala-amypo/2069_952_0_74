@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
             .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
-    public User findBy
+    // Test suite casts to UserServiceImpl and calls this
+    public User findById(Long id) {
+        return userRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    }
+}
